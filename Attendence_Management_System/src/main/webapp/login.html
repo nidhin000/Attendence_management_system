@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+  }
+  input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #aea3a3;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body style="background-image: url('student.jpg');">
+    
+<div class="login-container" >
+  <h2>Login</h2>
+ <form action="AttendenceServlet">
+		UserName<input type="text" name="username" width="20"/></br>
+		Password<input type="password" name="password" width="20"/></br>
+		<select class="role" name="role">
+			<option value="Admin">Admin</option>
+			<option value="User">Teacher</option>
+		</select>
+		</br>
+		<input type = "submit" name ="action" value="Login"/>
+		
+	</form>
+</div>
+<script>
+  const loginForm = document.getElementById('loginForm');
+
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = loginForm.elements['username'].value;
+    const password = loginForm.elements['password'].value;
+    const role = loginForm.elements['role'].value;
+    
+    // Check username, password, and role
+    if (role === 'admin' && username === 'admin' && password === 'adminpassword') {
+      // Redirect to admin page
+      window.location.href = 'admin_dashboard.html';
+    } else if (role === 'user' && username === 'user' && password === 'userpassword') {
+      // Redirect to user page
+      window.location.href = 'user_dashboard.html';
+    } else {
+      alert('Invalid username, password, or role');
+    }
+  });
+</script>
+</body>
+</html>
